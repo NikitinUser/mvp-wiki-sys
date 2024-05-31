@@ -19,11 +19,12 @@
 # Для запуска бэка:
 1. cd backend
 2. cp .env.example .env
-3. sudo make up
-4. make migrate
-5. make user-management-role-init
-6. make jwt-init
-7. php artisan app:set-admin {id_user} // опционально
+3. make install
+4. make user-management-role-init
+5. make jwt-init
+6. sudo make up
+7. make migrate
+8. php artisan app:set-admin {id_user} // опционально
 
 # Swagger
     Для генерации Swagger по аннотациям используются библиотеки:
