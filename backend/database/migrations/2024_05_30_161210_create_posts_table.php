@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->id();
                 $table->integer('post_number');
                 $table->unsignedBigInteger('created_by')->nullable();
-                $table->string('name', 500);
+                $table->string('title', 500);
                 $table->string('content', 500);
                 $table->integer('version')->default(1);
                 $table->boolean('is_active')->default(true);

@@ -15,7 +15,7 @@ class Post extends Model
         'id',
         'post_number',
         'created_by',
-        'name',
+        'title',
         'content',
         'version',
         'is_active'

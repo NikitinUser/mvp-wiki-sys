@@ -20,7 +20,7 @@ class PostFactory extends Factory
         return [
             'post_number' => 1,
             'created_by' => User::all()->random()->id,
-            'name' => $this->faker->sentence(14),
+            'title' => $this->faker->sentence(14),
             'content' => $this->faker->paragraphs(4, true),
             'version' => 1,
             'is_active' => true
