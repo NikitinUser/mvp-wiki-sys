@@ -27,3 +27,13 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'post'
+], function ($router) {
+    Route::get('/', 'PostController@all');
+    Route::get('{id}', 'PostController@getById');
+    Route::post('crreate', 'PostController@crreate');
+    Route::put('update', 'PostController@update');
+});
