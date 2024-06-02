@@ -35,6 +35,8 @@ class UpdatePostActionMediator
             $resultDto->idActive = $this->postServie->getActiveIdByPostNumber($post['post_number']);
 
             $dto->version = $actualVersion++;
+            $dto->post_number = $post['post_number'];
+            unset($dto->id);
 
             $resultDto->postId = $this
                 ->postServie

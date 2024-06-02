@@ -14,7 +14,7 @@ return new class extends Migration
         if (!Schema::hasTable('posts')) {
             Schema::create('posts', function (Blueprint $table) {
                 $table->id();
-                $table->integer('post_number');
+                $table->uuid('post_number');
                 $table->unsignedBigInteger('created_by')->nullable();
                 $table->string('title', 500);
                 $table->string('content', 500);
