@@ -29,11 +29,11 @@ class PostRepository
     }
 
     /**
-     * @param int $postNumber
+     * @param string $postNumber
      *
      * @return Post|null
      */
-    public function findActiveByPostNumber(int $postNumber): ?Post
+    public function findActiveByPostNumber(string $postNumber): ?Post
     {
         return Post::where('post_number', $postNumber)
             ->where('is_active', true)
@@ -41,16 +41,15 @@ class PostRepository
     }
 
     /**
-     * @param int $postNumber
+     * @param string $postNumber
      *
      * @return int
      */
-    public function findActualVersion(int $postNumber): int
+    public function findActualVersion(string $postNumber): int
     {
         return Post::select('version')
             ->where('post_number', $postNumber)
-            ->max('version')
-            ->first();
+            ->max('version');
     }
 
     /**

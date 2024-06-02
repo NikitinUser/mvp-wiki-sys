@@ -22,8 +22,18 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function ($router) {
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
+    Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
+});
+
+Route::group([
+    'middleware' => 'jwt.auth',
+    'prefix' => 'post'
+], function ($router) {
+    Route::get('/', [App\Http\Controllers\PostController::class, 'all']);
+    Route::get('{id}', [App\Http\Controllers\PostController::class, 'getById']);
+    Route::post('', [App\Http\Controllers\PostController::class, 'create']);
+    Route::put('', [App\Http\Controllers\PostController::class, 'update']);
 });

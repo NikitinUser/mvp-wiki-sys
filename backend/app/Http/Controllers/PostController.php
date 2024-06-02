@@ -65,7 +65,7 @@ class PostController extends Controller
      *
      * @return JsonResponse
      */
-    public function crreate(CreatePostRequest $request): JsonResponse
+    public function create(CreatePostRequest $request): JsonResponse
     {
         try {
             $dto = $this->postRequestTransformer->createPostTrasform($request->validated());
@@ -86,8 +86,7 @@ class PostController extends Controller
     {
         try {
             $dto = $this->postRequestTransformer->updatePostTrasform($request->validated());
-            $job = new UpdatePostJob($dto);
-            $job->dispatch()->onQueue('updating_post');
+            UpdatePostJob::dispatch($dto)->onQueue('updating_post');
             return response()->json();
         } catch (Throwable $t) {
             Log::error($t->getTraceAsString());

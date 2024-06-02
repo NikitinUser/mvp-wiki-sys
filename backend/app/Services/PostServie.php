@@ -35,11 +35,11 @@ class PostServie
     }
 
     /**
-     * @param int $postNumber
+     * @param string $postNumber
      *
      * @return int|null
      */
-    public function getActiveIdByPostNumber(int $postNumber): ?int
+    public function getActiveIdByPostNumber(string $postNumber): ?int
     {
         $post = $this->postRepository->findActiveByPostNumber($postNumber);
 
@@ -67,11 +67,11 @@ class PostServie
     }
 
     /**
-     * @param int $postNumber
+     * @param string $postNumber
      *
      * @return int
      */
-    public function getActualVersion(int $postNumber): int
+    public function getActualVersion(string $postNumber): int
     {
         return $this->postRepository->findActualVersion($postNumber);
     }

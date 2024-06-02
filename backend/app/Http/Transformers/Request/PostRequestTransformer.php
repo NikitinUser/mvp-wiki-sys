@@ -5,6 +5,7 @@ namespace App\Http\Transformers\Request;
 use App\DTO\CreatePostDto;
 use App\DTO\UpdatePostDto;
 use App\Http\Transformers\BaseTransformer;
+use Ramsey\Uuid\Uuid;
 
 class PostRequestTransformer extends BaseTransformer
 {
@@ -18,6 +19,7 @@ class PostRequestTransformer extends BaseTransformer
         $dto = $this->arrayToDto($requestData, CreatePostDto::class);
 
         $dto->created_by = auth()->user()->id;
+        $dto->post_number = Uuid::uuid4()->toString();
 
         return $dto;
     }

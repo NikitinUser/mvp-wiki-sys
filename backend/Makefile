@@ -34,9 +34,9 @@ test:
 	env UID=${UID} docker-compose exec -u app service-php php artisan test
 
 user-management-role-init:
-	env UID=${UID} docker-compose exec -u app service-php php artisan vendor:publish --provider="NikitinUser\UserManagementModule\Lib\Providers\UserManagementModuleProvider" 
+	env UID=${UID} docker-compose exec -u app service-php php artisan vendor:publish --provider="UserManagementModule\Providers\UserManagementModuleProvider" 
 	env UID=${UID} docker-compose exec -u app service-php php artisan migrate --path=./vendor/nikitinuser/user-management-module/Lib/database/migrations 
-	env UID=${UID} docker-compose exec -u app service-php php artisan db:seed --class="NikitinUser\\UserManagementModule\\Lib\\database\\seeders\\RolesSeed"
+	env UID=${UID} docker-compose exec -u app service-php php artisan db:seed --class="UserManagementModule\\database\\seeders\\RolesSeed"
 
 jwt-init:
 	env UID=${UID} docker-compose exec -u app service-php php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
